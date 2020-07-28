@@ -11,11 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
-import javax.validation.Validator;
 import javax.validation.constraints.NotNull;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 @RestController
 @RequestMapping("/api/products")
@@ -58,8 +54,7 @@ public class ProductController {
             this.productService.delete(id);
             return ResponseEntity.noContent().build();
         } catch (ResourceNotFoundException e) {
-            new ResourceNotFoundException("Product not found");
-            return ResponseEntity.noContent().build();
+            throw new ResourceNotFoundException("Product not found");
         }
     }
 

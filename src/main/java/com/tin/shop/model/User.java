@@ -45,6 +45,9 @@ public class User {
     @Basic(optional = false)
     private Roles userType;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Order> orders;
+
     public User() {
     }
 

@@ -40,6 +40,8 @@ public class ShopApplication {
             productService.save(new Product("Natural Throw Blanket", "Pure new wool", 35.00, "../../../assets/images/blanket-9.jpg", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis metus sapien. Nulla nec ullamcorper nibh. Proin massa ante, ornare at elit eget, suscipit consectetur ante.", wool));
             userService.save(new User("Anna", "Poziomka", "Kolejowa 12", "12-123", "Warsaw", "Poland", "a.poziomka@gmail.com", passwordEncoder.encode("pass"), Roles.USER));
             userService.save(new User("Garry", "Oldman", "Drukarzy 12", "02-123", "Warsaw", "Poland", "gold@gmail.com", passwordEncoder.encode("adminpass"), Roles.ADMIN));
+            userService.save(new User("Hana", "Montana", "Drukarzy 12", "02-123", "Warsaw", "Poland", "hana@gmail.com", passwordEncoder.encode("pass"), Roles.USER));
+            userService.save(new User("Sara", "Montana", "Drukarzy 12", "02-123", "Warsaw", "Poland", "sara@gmail.com", passwordEncoder.encode("pass"), Roles.USER));
         };
     }
 }
