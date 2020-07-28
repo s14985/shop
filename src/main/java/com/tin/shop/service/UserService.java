@@ -1,10 +1,12 @@
 package com.tin.shop.service;
 
+import com.tin.shop.model.Order;
 import com.tin.shop.model.User;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.Optional;
 
 @Validated
 public interface UserService {
@@ -16,4 +18,6 @@ public interface UserService {
     User save(User user);
 
     User getCurrentUser();
+
+    User getUserByOrder(Order order);
 }

@@ -1,7 +1,9 @@
 package com.tin.shop.service;
 
 import com.tin.shop.model.Order;
+import com.tin.shop.model.Product;
 import com.tin.shop.repository.OrderRepository;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,5 +34,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void update(Order order) {
         this.orderRepository.save(order);
+    }
+
+    @Override
+    public Iterable<Order> getUserOrders(Long userId) {
+        return this.orderRepository.findAllByUser(userId);
     }
 }

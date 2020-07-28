@@ -18,4 +18,6 @@ public interface ProductService {
     void delete(long id);
 
     Iterable<Product> getAllByMaterial(String material);
+
+
 }

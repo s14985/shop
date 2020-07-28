@@ -33,7 +33,11 @@ public class OrderController {
     UserService userService;
 
     @Autowired
-    public OrderController(ProductService productService, OrderService orderService, OrderProductService orderProductService, UserService userService) {
+    public OrderController(
+            ProductService productService,
+            OrderService orderService,
+            OrderProductService orderProductService,
+            UserService userService) {
         this.productService = productService;
         this.orderService = orderService;
         this.orderProductService = orderProductService;
@@ -52,6 +56,7 @@ public class OrderController {
         validateProductsExistence(formDtos);
         Order order = new Order();
         order.setStatus(OrderStatus.PAID.name());
+        order.setUser(userService.getCurrentUser());
         order = this.orderService.create(order);
 
         List<OrderProduct> orderProducts = new ArrayList<>();
@@ -83,7 +88,7 @@ public class OrderController {
                 .collect(Collectors.toList());
 
         if (!CollectionUtils.isEmpty(list)) {
-            new ResourceNotFoundException("Product not found");
+           throw new ResourceNotFoundException("Product not found");
         }
     }
 

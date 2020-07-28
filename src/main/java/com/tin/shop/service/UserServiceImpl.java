@@ -1,6 +1,7 @@
 package com.tin.shop.service;
 
 import com.tin.shop.exception.ResourceNotFoundException;
+import com.tin.shop.model.Order;
 import com.tin.shop.model.User;
 import com.tin.shop.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +9,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -53,5 +56,10 @@ public class UserServiceImpl implements UserService {
         return userRepository
                 .findByEmail(getCurrentUserLogin())
                 .orElseThrow(() -> new ResourceNotFoundException("No user found for current logged in credentials"));
+    }
+
+    @Override
+    public User getUserByOrder(Order order) {
+        return userRepository.findByOrders(order);
     }
 }
